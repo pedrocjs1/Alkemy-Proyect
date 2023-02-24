@@ -20,26 +20,21 @@ public class PeliculaSerie {
 
     private Calificacion calificacion;
 
-    @ManyToMany(mappedBy = "peliculasSeries")
-    private List<Genero> generos = new ArrayList<>();
+    @OneToMany(mappedBy = "peliculas")
+    private List<Personaje> personajes = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "personajes_peliculas_series",
-            joinColumns = @JoinColumn(name = "peliculaSerie_id"),
-            inverseJoinColumns = @JoinColumn(name = "personaje_id")
-    )
-    private Personaje personaje;
+
+
 
     public PeliculaSerie() {
     }
 
-    public PeliculaSerie(Long id, String titulo, Date fechaCreacion, Calificacion calificacion, Personaje personaje) {
+    public PeliculaSerie(Long id, String titulo, Date fechaCreacion, Calificacion calificacion, List<Personaje> personajes) {
         this.id = id;
         this.titulo = titulo;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
-        this.personaje = personaje;
+        this.personajes = personajes;
     }
 
     public Long getId() {
@@ -58,8 +53,8 @@ public class PeliculaSerie {
         return calificacion;
     }
 
-    public Personaje getPersonaje() {
-        return personaje;
+    public List<Personaje> getPersonajes() {
+        return personajes;
     }
 
     public void setId(Long id) {
@@ -78,7 +73,7 @@ public class PeliculaSerie {
         this.calificacion = calificacion;
     }
 
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
+    public void setPersonajes(List<Personaje> personajes) {
+        this.personajes = personajes;
     }
 }

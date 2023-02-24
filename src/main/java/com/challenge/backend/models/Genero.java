@@ -1,16 +1,13 @@
 package com.challenge.backend.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Genero {
-
+    @Id
     private Long id;
 
     private String nombre;

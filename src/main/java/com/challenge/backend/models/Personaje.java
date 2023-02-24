@@ -27,7 +27,7 @@ public class Personaje {
 
     private String historia;
 
-    @ManyToMany(mappedBy="personaje", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<PeliculaSerie> peliculas = new ArrayList<>();
 
     public Personaje(){}
