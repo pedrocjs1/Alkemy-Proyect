@@ -1,6 +1,8 @@
 package com.challenge.backend.models;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +10,12 @@ import java.util.List;
 @Entity
 public class Genero {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
     private String nombre;
-
+    private String imagen;
 
     @ManyToMany
     @JoinTable(
@@ -25,10 +29,24 @@ public class Genero {
     public Genero() {
     }
 
-    public Genero(Long id, String nombre, List<PeliculaSerie> pelicula) {
+    public Genero(Long id, String nombre, String imagen, List<PeliculaSerie> pelicula) {
         this.id = id;
         this.nombre = nombre;
+        this.imagen = imagen;
         this.pelicula = pelicula;
+    }
+
+    public Genero(String nombre, String imagen) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public Long getId() {

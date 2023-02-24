@@ -21,9 +21,9 @@ public class Personaje {
 
     private String nombre;
 
-    private Integer edad;
+    private Double edad;
 
-    private Integer peso;
+    private Double peso;
 
     private String historia;
 
@@ -32,7 +32,7 @@ public class Personaje {
 
     public Personaje(){}
 
-    public Personaje(Long id, String image, String nombre, Integer edad, Integer peso, String historia, List<PeliculaSerie> peliculas) {
+    public Personaje(Long id, String image, String nombre, Double edad, Double peso, String historia, List<PeliculaSerie> peliculas) {
         this.id = id;
         this.image = image;
         this.nombre = nombre;
@@ -40,6 +40,14 @@ public class Personaje {
         this.peso = peso;
         this.historia = historia;
         this.peliculas = peliculas;
+    }
+
+    public Personaje(String image, String nombre, Double edad, Double peso, String historia) {
+        this.image = image;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.peso = peso;
+        this.historia = historia;
     }
 
     public Long getId() {
@@ -54,11 +62,11 @@ public class Personaje {
         return nombre;
     }
 
-    public Integer getEdad() {
+    public Double getEdad() {
         return edad;
     }
 
-    public Integer getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
@@ -82,11 +90,11 @@ public class Personaje {
         this.nombre = nombre;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(Double edad) {
         this.edad = edad;
     }
 
-    public void setPeso(Integer peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 

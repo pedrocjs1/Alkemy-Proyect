@@ -23,9 +23,6 @@ public class PeliculaSerie {
     @OneToMany(mappedBy = "peliculas")
     private List<Personaje> personajes = new ArrayList<>();
 
-
-
-
     public PeliculaSerie() {
     }
 
