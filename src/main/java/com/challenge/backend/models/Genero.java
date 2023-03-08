@@ -1,14 +1,18 @@
 package com.challenge.backend.models;
 
 
+<<<<<<< Updated upstream
 import org.hibernate.annotations.GenericGenerator;
 
+=======
+>>>>>>> Stashed changes
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Genero {
+<<<<<<< Updated upstream
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -16,6 +20,13 @@ public class Genero {
 
     private String nombre;
     private String imagen;
+=======
+
+    @Id
+    private Long id;
+
+    private String nombre;
+>>>>>>> Stashed changes
 
     @ManyToMany
     @JoinTable(
@@ -25,6 +36,8 @@ public class Genero {
     )
     private List<PeliculaSerie> pelicula = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "generos")
+    private List<PeliculaSerie> peliculaSeries;
 
     public Genero() {
     }
