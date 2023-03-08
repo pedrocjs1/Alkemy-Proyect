@@ -20,18 +20,10 @@ public class PeliculaSerie {
 
     private Calificacion calificacion;
 
-<<<<<<< Updated upstream
     @OneToMany(mappedBy = "peliculas")
     private List<Personaje> personajes = new ArrayList<>();
-=======
     @ManyToMany(mappedBy = "peliculasSeries")
     private List<Genero> generos = new ArrayList<>();
-
-
-    @ManyToMany(mappedBy = "")
-    private List<Personaje>
->>>>>>> Stashed changes
-
     public PeliculaSerie() {
     }
 
@@ -40,10 +32,7 @@ public class PeliculaSerie {
         this.titulo = titulo;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
-<<<<<<< Updated upstream
         this.personajes = personajes;
-=======
->>>>>>> Stashed changes
     }
 
     public Long getId() {
@@ -62,17 +51,15 @@ public class PeliculaSerie {
         return calificacion;
     }
 
-<<<<<<< Updated upstream
     public List<Personaje> getPersonajes() {
         return personajes;
-=======
+
     public List<Genero> getGeneros() {
         return generos;
     }
 
     public void setGeneros(List<Genero> generos) {
         this.generos = generos;
->>>>>>> Stashed changes
     }
 
     public void setId(Long id) {
@@ -91,16 +78,14 @@ public class PeliculaSerie {
         this.calificacion = calificacion;
     }
 
-<<<<<<< Updated upstream
     public void setPersonajes(List<Personaje> personajes) {
         this.personajes = personajes;
-=======
+
     public List<Personaje> getPersonaje() {
         return personaje;
     }
 
     public void setPersonaje(List<Personaje> personaje) {
         this.personaje = personaje;
->>>>>>> Stashed changes
     }
 }
