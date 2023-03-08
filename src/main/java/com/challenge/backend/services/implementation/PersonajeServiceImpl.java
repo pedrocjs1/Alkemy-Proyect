@@ -50,7 +50,7 @@ public class PersonajeServiceImpl implements PersonajeService {
     @Override
     public List<Personaje> ObtenerCarecteristicasPersonaje(String nombre, Double edad, Long idPelicula) {
         if(nombre != null && nombre.isEmpty()) {
-            return personajeRepository.findByNombre(nombre);
+            return personajeRepository.findAllByNombre(nombre);
         } else if (edad != null && edad.isNaN()) {
             return personajeRepository.findByEdad(edad);
         } else if (idPelicula != null) {
@@ -58,5 +58,4 @@ public class PersonajeServiceImpl implements PersonajeService {
         }
         return personajeRepository.findAll();
     }
-
 }

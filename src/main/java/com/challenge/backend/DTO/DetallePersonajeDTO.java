@@ -2,13 +2,7 @@ package com.challenge.backend.DTO;
 
 import com.challenge.backend.models.Personaje;
 
-
-
-
 public class DetallePersonajeDTO {
-
-
-    private Long id;
     private String nombre;
     private String imagen;
 

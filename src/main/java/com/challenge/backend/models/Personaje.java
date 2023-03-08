@@ -25,20 +25,10 @@ public class Personaje {
 
     private String historia;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<PeliculaSerie> peliculas = new ArrayList<>();
 
     public Personaje(){}
-
-    public Personaje(Long id, String image, String nombre, Double edad, Double peso, String historia, List<PeliculaSerie> peliculas) {
-        this.id = id;
-        this.image = image;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.peso = peso;
-        this.historia = historia;
-        this.peliculas = peliculas;
-    }
 
     public Personaje(String image, String nombre, Double edad, Double peso, String historia) {
         this.image = image;

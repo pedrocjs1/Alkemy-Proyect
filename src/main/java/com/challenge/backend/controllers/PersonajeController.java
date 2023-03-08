@@ -82,5 +82,4 @@ public class PersonajeController {
             @RequestParam(required = false) Long idPelicula) {
         return personajeService.ObtenerCarecteristicasPersonaje(nombre, edad, idPelicula);
     }
-
 }
