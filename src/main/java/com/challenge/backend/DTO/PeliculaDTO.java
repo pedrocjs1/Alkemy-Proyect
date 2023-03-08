@@ -8,17 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PeliculaDTO {
-
     private Long id;
     private String titulo;
-    private Date fechaCreacion;
-    private Calificacion califacion;
-
-    private List<DetallePersonajeDTO> personajes;
-
-    public PeliculaDTO(PeliculaSerie peliculaSerie) {
-    this.id = peliculaSerie.getId();
-    this.titulo = peliculaSerie.getTitulo();
     this.fechaCreacion = peliculaSerie.getFechaCreacion();
     this.personajes = peliculaSerie.getPersonajes().stream().map(DetallePersonajeDTO::new).collect(Collectors.toList());
     }

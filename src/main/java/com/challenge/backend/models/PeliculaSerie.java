@@ -53,6 +53,7 @@ public class PeliculaSerie {
 
     public List<Personaje> getPersonajes() {
         return personajes;
+    }
 
     public List<Genero> getGeneros() {
         return generos;
@@ -80,12 +81,13 @@ public class PeliculaSerie {
 
     public void setPersonajes(List<Personaje> personajes) {
         this.personajes = personajes;
+    }
 
     public List<Personaje> getPersonaje() {
-        return personaje;
+        return personajes;
     }
 
     public void setPersonaje(List<Personaje> personaje) {
-        this.personaje = personaje;
+        this.personajes = personaje;
     }
 }
