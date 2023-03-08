@@ -1,6 +1,8 @@
 package com.challenge.backend.services.implementation;
 
+import com.challenge.backend.models.PeliculaSerie;
 import com.challenge.backend.models.Personaje;
+import com.challenge.backend.repositories.PeliculaSerieRepository;
 import com.challenge.backend.repositories.PersonajeRepository;
 import com.challenge.backend.services.PersonajeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import java.util.List;
 public class PersonajeServiceImpl implements PersonajeService {
     @Autowired
     private PersonajeRepository personajeRepository;
+    @Autowired
+    private PeliculaSerieRepository peliculaSerieRepository;
     
     @Override
     public void CrearPersonaje(Personaje personaje) {
@@ -43,4 +47,16 @@ public class PersonajeServiceImpl implements PersonajeService {
     public void EliminarPersonaje(Long id) {
         personajeRepository.deleteById(id);
     }
+    @Override
+    public List<Personaje> ObtenerCarecteristicasPersonaje(String nombre, Double edad, Long idPelicula) {
+        if(nombre != null && nombre.isEmpty()) {
+            return personajeRepository.findByNombre(nombre);
+        } else if (edad != null && edad.isNaN()) {
+            return personajeRepository.findByEdad(edad);
+        } else if (idPelicula != null) {
+            return personajeRepository.findByPeliculas(idPelicula);
+        }
+        return personajeRepository.findAll();
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.challenge.backend.controllers;
 
+import com.challenge.backend.DTO.DetallePersonajeDTO;
+import com.challenge.backend.models.PeliculaSerie;
 import com.challenge.backend.models.Personaje;
 import com.challenge.backend.services.PersonajeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +74,13 @@ public class PersonajeController {
         personajeService.EliminarPersonaje(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/caracteristicas")
+    public List<Personaje> buscarCaracteristicas(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) Double edad,
+            @RequestParam(required = false) Long idPelicula) {
+        return personajeService.ObtenerCarecteristicasPersonaje(nombre, edad, idPelicula);
+    }
+
 }
