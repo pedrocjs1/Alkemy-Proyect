@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/pelicula")
 public class PeliculaSerieController {
-
     @Autowired
     private PeliculaSerieService peliculaSerieService;
 
@@ -43,15 +42,16 @@ public class PeliculaSerieController {
         String titulo = newPeliculaSerieDTO.getTitulo();
         Date fecha = newPeliculaSerieDTO.getFechaCreacion();
         Calificacion calificacion = newPeliculaSerieDTO.getCalificacion();
+        List<Genero> generos = newPeliculaSerieDTO.getGeneros();
+        PeliculaSerie peliculaSerie1 = new PeliculaSerie(titulo, fecha, calificacion, generos);
+        peliculaSerieService.savePeliculaSerie(peliculaSerie1);
         List<Personaje> personajes = newPeliculaSerieDTO.getPersonajes().stream()
                 .map(personaje -> {
                     new Personaje(personaje.getImage(), personaje.getNombre(), personaje.getEdad(), personaje.getPeso(), personaje.getHistoria());
+                    personaje.AddPeliculas(peliculaSerie1);
                     personajeService.CrearPersonaje(personaje);
                     return personaje;
-                }).collect(Collectors.toList());;
-        List<Genero> generos = newPeliculaSerieDTO.getGeneros();
-        PeliculaSerie peliculaSerie1 = new PeliculaSerie(titulo, fecha, calificacion, personajes, generos);
-        peliculaSerieService.savePeliculaSerie(peliculaSerie1);
+                }).collect(Collectors.toList());
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }

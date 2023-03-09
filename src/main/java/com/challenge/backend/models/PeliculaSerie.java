@@ -5,9 +5,7 @@ import com.challenge.backend.enums.Calificacion;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class PeliculaSerie {
@@ -19,18 +17,21 @@ public class PeliculaSerie {
     private Date fechaCreacion;
     private Calificacion calificacion;
     @ManyToMany(mappedBy = "peliculas", fetch = FetchType.EAGER)
-    private List<Personaje> personajes = new ArrayList<>();
+    private Set<Personaje> personajes = new HashSet<>();
     @OneToMany(mappedBy = "peliculaSerie")
-    private List<Genero> generos = new ArrayList<>();
+    private List<Genero> generos;
     public PeliculaSerie() {
     }
 
-    public PeliculaSerie(String titulo, Date fechaCreacion, Calificacion calificacion, List<Personaje> personajes, List<Genero> generos) {
+    public PeliculaSerie(String titulo, Date fechaCreacion, Calificacion calificacion, List<Genero> generos) {
         this.titulo = titulo;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
-        this.personajes = personajes;
         this.generos = generos;
+    }
+
+    public void AddPersonajes(Personaje personaje) {
+        this.personajes.add(personaje);
     }
 
     public Long getId() {
@@ -49,7 +50,7 @@ public class PeliculaSerie {
         return calificacion;
     }
 
-    public List<Personaje> getPersonajes() {
+    public Set<Personaje> getPersonajes() {
         return personajes;
     }
 
@@ -77,15 +78,7 @@ public class PeliculaSerie {
         this.calificacion = calificacion;
     }
 
-    public void setPersonajes(List<Personaje> personajes) {
-        this.personajes = personajes;
-    }
-
-    public List<Personaje> getPersonaje() {
-        return personajes;
-    }
-
-    public void setPersonaje(List<Personaje> personaje) {
+    public void setPersonaje(Set<Personaje> personaje) {
         this.personajes = personaje;
     }
 }

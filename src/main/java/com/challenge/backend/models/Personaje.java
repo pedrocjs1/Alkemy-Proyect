@@ -1,11 +1,14 @@
 package com.challenge.backend.models;
 
 
+import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Personaje {
@@ -26,7 +29,7 @@ public class Personaje {
     private String historia;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<PeliculaSerie> peliculas = new ArrayList<>();
+    private Set<PeliculaSerie> peliculas = new HashSet<>();
 
     public Personaje(){}
 
@@ -36,6 +39,11 @@ public class Personaje {
         this.edad = edad;
         this.peso = peso;
         this.historia = historia;
+    }
+
+    public void AddPeliculas(PeliculaSerie peliculaSeries) {
+        this.peliculas.add(peliculaSeries);
+        peliculaSeries.AddPersonajes(this);
     }
 
     public Long getId() {
@@ -62,7 +70,8 @@ public class Personaje {
         return historia;
     }
 
-    public List<PeliculaSerie> getPeliculas() {
+    @JsonIgnore
+    public Set<PeliculaSerie> getPeliculas() {
         return peliculas;
     }
 
@@ -90,7 +99,7 @@ public class Personaje {
         this.historia = historia;
     }
 
-    public void setPeliculas(List<PeliculaSerie> peliculas) {
+    public void setPeliculas(Set<PeliculaSerie> peliculas) {
         this.peliculas = peliculas;
     }
 }

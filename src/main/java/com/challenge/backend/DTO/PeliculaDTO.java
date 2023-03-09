@@ -4,6 +4,7 @@ import com.challenge.backend.enums.Calificacion;
 import com.challenge.backend.models.PeliculaSerie;
 import com.challenge.backend.models.Personaje;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PeliculaDTO {
         this.titulo = peliculaSerie.getTitulo();
         this.fechaCreacion = peliculaSerie.getFechaCreacion();
         this.calificacion = peliculaSerie.getCalificacion();
-        this.personajes = peliculaSerie.getPersonajes();
+        this.personajes = new ArrayList<>(peliculaSerie.getPersonajes());
     }
 
     public Long getId() {
