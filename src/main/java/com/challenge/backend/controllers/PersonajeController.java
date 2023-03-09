@@ -1,6 +1,7 @@
 package com.challenge.backend.controllers;
 
 import com.challenge.backend.DTO.DetallePersonajeDTO;
+import com.challenge.backend.DTO.PersonajeDTO;
 import com.challenge.backend.models.PeliculaSerie;
 import com.challenge.backend.models.Personaje;
 import com.challenge.backend.services.PersonajeService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -18,8 +20,8 @@ public class PersonajeController {
     private PersonajeService personajeService;
 
     @GetMapping("/obtenerPersonajes")
-    public List<Personaje> obtenerPersonajes() {
-        return personajeService.ObtenerPersonajes();
+    public List<PersonajeDTO> obtenerPersonajes() {
+        return personajeService.ObtenerPersonajes().stream().map(personaje -> new PersonajeDTO(personaje)).collect(Collectors.toList());
     }
 
     @GetMapping("/obtenerPersonajes/{id}")

@@ -1,9 +1,9 @@
 package com.challenge.backend.DTO;
 
-import com.challenge.backend.models.PeliculaSerie;
 import com.challenge.backend.models.Personaje;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonajeDTO {
     private Long id;
@@ -12,7 +12,7 @@ public class PersonajeDTO {
     private Double edad;
     private Double peso;
     private String historia;
-    private List<PeliculaSerie> peliculas;
+    private List<PeliculaDTO> peliculas;
 
     public PersonajeDTO(Personaje personaje) {
         this.id = personaje.getId();
@@ -21,7 +21,7 @@ public class PersonajeDTO {
         this.edad = personaje.getEdad();
         this.peso = personaje.getPeso();
         this.historia = personaje.getHistoria();
-        this.peliculas = personaje.getPeliculas();
+        this.peliculas = personaje.getPeliculas().stream().map(peliculaSerie -> new PeliculaDTO(peliculaSerie)).collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -48,7 +48,7 @@ public class PersonajeDTO {
         return historia;
     }
 
-    public List<PeliculaSerie> getPeliculas() {
+    public List<PeliculaDTO> getPeliculas() {
         return peliculas;
     }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface PeliculaSerieService {
     PeliculaSerie ObtenerPeliculaNombre(String nombre);
     void savePeliculaSerie(PeliculaSerie peliculaSerie);
+    List<PeliculaSerie> ObtenerPeliculas();
 }

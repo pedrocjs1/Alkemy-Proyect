@@ -6,6 +6,8 @@ import com.challenge.backend.services.PeliculaSerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class PeliculaSerieServiceImpl implements PeliculaSerieService {
@@ -22,5 +24,10 @@ public class PeliculaSerieServiceImpl implements PeliculaSerieService {
     @Override
     public void savePeliculaSerie(PeliculaSerie peliculaSerie) {
         peliculaSerieRepository.save(peliculaSerie);
+    }
+
+    @Override
+    public List<PeliculaSerie> ObtenerPeliculas() {
+        return peliculaSerieRepository.findAll();
     }
 }

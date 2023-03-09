@@ -2,18 +2,21 @@ package com.challenge.backend.DTO;
 
 import com.challenge.backend.enums.Calificacion;
 import com.challenge.backend.models.Genero;
+import com.challenge.backend.models.PeliculaSerie;
+import com.challenge.backend.models.Personaje;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NewPeliculaSerieDTO {
     private String titulo;
     private Date fechaCreacion;
     private Calificacion calificacion;
-    private List<PersonajeDTO> personajes;
+    private List<Personaje> personajes;
     private List<Genero> generos;
 
-    public NewPeliculaSerieDTO(String titulo, Date fechaCreacion, Calificacion calificacion, List<PersonajeDTO> personajes, List<Genero> generos) {
+    public NewPeliculaSerieDTO(String titulo, Date fechaCreacion, Calificacion calificacion, List<Personaje> personajes, List<Genero> generos) {
         this.titulo = titulo;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
@@ -33,7 +36,7 @@ public class NewPeliculaSerieDTO {
         return calificacion;
     }
 
-    public List<PersonajeDTO> getPersonajes() {
+    public List<Personaje> getPersonajes() {
         return personajes;
     }
 

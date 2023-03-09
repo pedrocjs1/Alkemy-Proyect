@@ -2,6 +2,7 @@ package com.challenge.backend.models;
 
 
 import com.challenge.backend.enums.Calificacion;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,29 +11,26 @@ import java.util.List;
 
 @Entity
 public class PeliculaSerie {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(strategy = "native", name = "native")
     private Long id;
-
     private String titulo;
-
     private Date fechaCreacion;
-
     private Calificacion calificacion;
-
-    @OneToMany(mappedBy = "peliculas")
+    @ManyToMany(mappedBy = "peliculas", fetch = FetchType.EAGER)
     private List<Personaje> personajes = new ArrayList<>();
-    @ManyToMany(mappedBy = "peliculasSeries")
+    @OneToMany(mappedBy = "peliculaSerie")
     private List<Genero> generos = new ArrayList<>();
     public PeliculaSerie() {
     }
 
-    public PeliculaSerie(Long id, String titulo, Date fechaCreacion, Calificacion calificacion, List<Personaje> personajes) {
-        this.id = id;
+    public PeliculaSerie(String titulo, Date fechaCreacion, Calificacion calificacion, List<Personaje> personajes, List<Genero> generos) {
         this.titulo = titulo;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
         this.personajes = personajes;
+        this.generos = generos;
     }
 
     public Long getId() {
