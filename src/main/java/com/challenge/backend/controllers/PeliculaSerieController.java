@@ -33,8 +33,8 @@ public class PeliculaSerieController {
     }
 
     @GetMapping("/obtenerPeliculas")
-    public List<PeliculaSerie> ObtenerPeliculas() {
-        return peliculaSerieService.ObtenerPeliculas();
+    public List<PeliculaDTO> ObtenerPeliculas() {
+        return peliculaSerieService.ObtenerPeliculas().stream().map(peliculaSerie -> new PeliculaDTO(peliculaSerie)).collect(Collectors.toList());
     }
 
     @PostMapping("/crearPelicula")

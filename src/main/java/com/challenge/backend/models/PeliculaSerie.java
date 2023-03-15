@@ -16,10 +16,13 @@ public class PeliculaSerie {
     private String titulo;
     private Date fechaCreacion;
     private Calificacion calificacion;
+
     @ManyToMany(mappedBy = "peliculas", fetch = FetchType.EAGER)
     private Set<Personaje> personajes = new HashSet<>();
+
     @OneToMany(mappedBy = "peliculaSerie")
     private List<Genero> generos;
+
     public PeliculaSerie() {
     }
 
